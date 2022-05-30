@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-COMMERCE WEBSITE</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-
+    mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2Emffsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+
+  <style>
+    :root {
+      --body_gradient_left: #2849a5;
+      --body_gradient_right: #b36d82;
+    }
+
+    #spinner:not([hidden]) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #spinner::after {
+      content: "";
+      width: 80px;
+      height: 80px;
+      border: 2px solid #f3f3f3;
+      border-top: 3px solid #17a105;
+      border-radius: 100%;
+      will-change: transform;
+      animation: spin 1s infinite linear;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    table {
+      background-color: rgb(166, 214, 214);
+      margin: 10px auto;
+      border-radius: 6px;
+      text-align: center;
+      padding: 5px;
+      letter-spacing: 4px;
+      font-style: oblique;
+      box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+      color: black;
+      text-decoration: none;
+    }
+    body{
+      background-color: #c6d6e2;
+    }
+
+    #tbl2 {
+      text-align: justify;
+      letter-spacing: 2px;
+      word-spacing: 10px;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      box-shadow: none;
+
+    }
+   
+
+    th {
+      background-color: rgb(110, 201, 148);
+      margin: 50px 20px;
+      color: black;
+
+    }
+
+    #demo {
+      display: grid;
+      grid: auto auto / auto auto auto auto;
+      grid-gap: 10px;
+      padding: 50px;
+    }
+    
+
+    #photos {
+      padding: 2px 20px;
+      margin: 5px auto;
+      box-shadow: 2px 5px 10px rgba(218, 152, 152, 0.5);
+      width:97% ;height: 500px;
+    }
+
+    a {
+      text-decoration: none;
+      transition: transform .2s;
+      cursor: pointer;
+      
+    }
+
+    a:hover {
+      filter: blur(0px);
+      transform: scale(1.1);
+    }
+
+    .flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    header {
+      width: 97%;
+      max-height: 5%;
+      padding: 0px;
+      justify-content: space-between !important;
+    }
+
+    header ul {
+      margin-top: 1px;
+    }
+
+    header ul li {
+      padding: 5px 20px;
+      margin: 1px;
+      transition: all 0.5s;
+    }
+
+    header ul li a {
+      font-size: 20px;
+      color: rgba(27, 26, 26, 0.705);
+      font-weight: 600;
+
+    }
+
+    header ul li a:hover {
+      color: rgb(7, 12, 0);
+    }
+
+    header input {
+      padding: 5px 20px;
+      color: rgba(27, 26, 26, 0.705);
+      background-color:transparent;
+      font-weight: 800;
+      outline: none;
+      border: none;
+      margin-top: 1px;
+      font-size: 17px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.7s;
+    }
+/* .slider{
+  overflow: hidden;
+  width:97% ;height: 500px; 
+  margin: 0 auto;
+  animation:  slide 10s ease infinite;
+}
+@keyframes slide{
+  0%{
+    left: 0%;
+  }
+  10%{
+    left: 0%;
+  }
+  12%{
+    left: -100%;
+  }
+  22%{
+    left: -100%;
+  }
+  24%{
+    left: -200%;
+  } 
+}*/
+
+   
+  </style>
+</head>
+
+<body>
+  <header class="flex">
+    <ul class="flex" type="none">
+      <li><i class="fas fa-home"></i><a href="index.html"> Home</a></li>
+      <li><i class="fas fa-user"></i><a href="#"> About Us</a></li>
+      <li><i class="fas fa-phone"></i><a href="cart.html"> Contact Us</a></li>
+    </ul>
+    <ul class="flex" type="none">
+      <li><span> <i class="fas fa-shopping-cart"></i> </span><span><a href="cart.html">Cart</a></span></li>
+      <li> <i class="fas fa-sign-in-alt"></i><a href="login.html">Login</a></li>
+
+    </ul>
+  </header>
+  <!-- <div class="slidernk">
+    <figure>
+      <div class="slider">
+        <a href="#"> <img id="photo" src="shopping.jpg" class="img-fluid" alt="Web Development" /></a>
+      </div>
+      <div class="slider">
+        <a href="#"> <img id="photo" src="OIP.jpg" class="img-fluid" alt="Web Development" /></a>
+      </div>
+      <div class="slider">
+        <a href="#"> <img id="photo" src="download.jpg" class="img-fluid" alt="Web Development" /></a>
+      </div>
+    </figure>
+  </div> -->
+  <img id="photos" src="shopping.jpg" class="img-fluid" alt="Web Development" />
+  <div hidden id="spinner"></div>
+
+  <div id="demo"></div>
+  <script>
+    pid="";
+    const spinner = document.getElementById("spinner");
+    spinner.removeAttribute("hidden");
+    fetch("http://fakestoreapi.com/products/")
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (data) {
+        spinner.setAttribute("hidden", "");
+        const prd = JSON.parse(data);
+
+        for (i in prd) {
+          console.log(prd[i].title);
+      
+          document.getElementById("demo").innerHTML +=
+            "<a href='product.html?pid=" +
+            prd[i].id +
+            "'><table id='tbl1'><th>" +
+            prd[i].category +
+            "<tr><td><img width=200px height=200px src=" +
+            prd[i].image +
+            ">" +
+            "<table id='tbl2'><td>PRICE: $" +
+            prd[i].price +
+            "<tr><td>RATING: " +
+            prd[i].rating.rate +
+            "</a>";
+            
+     localStorage.setItem("id",pid);
+        }
+        
+      });
+    // ***************************************************************************
+    
+     
+
+  </script>
+</body>
+
+</html>

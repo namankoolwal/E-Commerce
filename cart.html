@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-
+    mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2Emffsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+
+  <style>
+    :root {
+      --body_gradient_left: #7200d0;
+      --body_gradient_right: #c800c1;
+      /* --form_bg:#ffffff; */
+    }
+
+    body {
+      /* text-align: center; */
+      background-color: #c6d6e2;
+      /* background-image: linear-gradient(to right,
+          var(--body_gradient_left),
+          var(--body_gradient_right)); */
+          /* max-width: 60%; */
+          align-items: left;
+    }
+
+    table {
+      background-color: rgb(17, 185, 185);
+      margin: 10px auto;
+      border-radius: 6px;
+      text-align: center;
+      padding: auto;
+      /* letter-spacing: 4px; */
+      font-style: oblique;
+      box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+    }
+    #tbl1{
+      max-width: 40%;
+      min-width: 40%;
+      
+    }
+
+    #tbl2 {
+      /* text-align: justify; */
+      /* letter-spacing: 2px; */
+      /* word-spacing: 10px; */
+      font-family: Georgia, "Times New Roman", Times, serif;
+      box-shadow: none;
+      /* font-size: larger; */
+    }
+
+    th {
+      /* text-decoration: underline; */
+      font-size: larger;
+      font-family: "Times New Roman", Times, serif;
+      min-width: auto;
+      text-transform: uppercase;
+    }
+
+    #heading {
+      color: black;
+      text-decoration: underline overline;
+    }
+
+    input[type="submit"] , button {
+      color: white;
+      background-color: #04aa6d;
+      cursor: pointer;
+      padding: 12px 20px;
+      border: 1px solid #777;
+      border-radius: 5px;
+      font-family: inherit;
+      font-size: 21px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    input[type="submit"]:hover , button:hover{
+      background-color: #04774d;
+    }
+
+    .dt1 {
+      /* background-color: #a0d4ff; */
+      /* max-width: 350px; */
+      margin: 20px auto;
+      padding: 5px 10px;
+      /* box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5); */
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-family: Georgia, "Times New Roman", Times, serif;
+  
+    }
+
+    .flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    header {
+      width: 97%;
+      max-height: 5%;
+      padding: 0px;
+      justify-content: space-between !important;
+      background-color: rgb(165, 158, 158);
+    }
+
+    header ul {
+      margin-top: 1px;
+    }
+
+    header ul li {
+      padding: 5px 20px;
+      margin: 1px;
+      transition: all 0.5s;
+    }
+
+    header ul li a {
+      font-size: 20px;
+      color: rgba(24, 18, 18, 0.705);
+      font-weight: 600;
+      /* transition: color ease-out 0.6s; */
+      text-decoration: none;
+    }
+
+    header ul li a:hover {
+      color: rgb(8, 8, 8);
+    }
+
+    header input {
+      padding: 5px 20px;
+      color: rgba(24, 18, 18, 0.705);
+      background-color: transparent;
+      font-weight: 800;
+      outline: none;
+      border: none;
+      margin-top: 1px;
+      font-size: 17px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.7s;
+    }
+
+    header input:hover {
+      transform: scale(1.09);
+      color: rgb(8, 8, 8);
+
+    }
+    #demo{
+      display:block;
+      /* padding: 50px; */
+    /* align-items: flex-start; */
+align-items: left;
+    }
+    #demo2{
+      display: block;
+      align-items:flex-end;
+      text-align: right;
+      
+    }
+    
+  </style>
+</head>
+<body>
+    <header class="flex">
+        <ul class="flex" type="none">
+          <li><i class="fas fa-home"></i><a href="index.html"> Home</a></li>
+          <li><i class="fas fa-user"></i><a href="#">  About Us</a></li>
+          <li><i class="fas fa-phone"></i><a href="#">  Contact Us</a></li>
+          </ul>
+          <ul class="flex" type="none">
+         <li><span> <i class="fas fa-shopping-cart"></i> </span><span><a href="cart.html">Cart</a></span></li>
+         <li> <i class="fas fa-sign-in-alt"></i> <a href="login.html">Login</a></li>
+        </ul>
+      </header>
+          <div class="dt1">
+            <p id="demo">  </p>
+          </div>
+          <div class="dt1">
+            <p id="demo2"></p>
+          </div>
+          <div class="dt1">
+            <div class="dt1">
+            <input type="submit" value="PROCEED TO BUY" onclick="purch();"/>
+            <input type="submit" value="EMPTY CART" onclick="cart();" />
+          </div>
+          </div>
+       
+</body>
+<script>
+    var t=0;
+    var n=[];
+    var f="";
+    var n=JSON.parse(localStorage.getItem("cart"));
+    for(i=0;i<=n.length;i++){
+        
+        fetch("http://fakestoreapi.com/products/" + n[i])
+    .then(function (response) {
+      return response.text();
+    })
+    .then(function (data) {
+      var prd = JSON.parse(data);
+  
+      console.log(prd);
+      f=prd.id;
+      document.getElementById("demo").innerHTML +=
+        "<div class='dt1'><table id='tbl1'><th>" +
+        prd.category +
+        "<br><br><tr><td><img width=200px height=200px src=" +
+        prd.image +
+        ">" +
+        "<table id='tbl2'><td>PRICE: " +
+        prd.price +
+        "<tr><td>IN STOCK: " +
+        prd.rating.count + " pcs"+
+        "<button id='btn1' onclick='rmv(f);'> Remove</button>"
+        t=t+prd.price;
+      r=t.toFixed(2);
+         console.log(r);
+        document.getElementById("demo2").innerHTML="Total Amount To Pay: "+r;   
+    });
+      }
+function cart(){
+  localStorage.removeItem("cart");
+  location.href="cart.html";
+  if(localStorage.getItem("cart")==null)
+  {
+  localStorage.setItem("cart","[]")
+}
+
+}
+      function rmv(z){
+        console.log(z);
+        var b=[];
+        b=n.filter(remov)
+        function remov(g)
+        {return g!=z}
+        localStorage.setItem("cart",JSON.stringify(b));
+        location.href="cart.html";
+      }  
+      function purch() {
+    location.href = "details.html";
+  }    
+  
+    
+</script>
+</html>

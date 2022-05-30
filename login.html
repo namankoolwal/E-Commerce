@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOGIN FORM</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-
+    mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2Emffsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet" />
+
+    <style>
+        :root {
+            --body_gradient_left: #7200d0;
+            --body_gradient_right: #c800c1;
+            --form_bg: #ffffff;
+            --input_bg: #e5e5e5;
+            --input_hover: #eaeaea;
+            --submit_bg: #1fcc44;
+            --submit_hover: #40e263;
+            --icon_color: #6b6b6b;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            
+            /* display: flex; */
+      background-color: #c6d6e2;
+
+        }
+
+        #form_wrapper {
+            width: 450px;
+            height: 500px;
+            margin: 10vh auto;
+            background-color: var(--form_bg);
+            border-radius: 50px;
+            padding: 5vh 15px;
+            align-items: center;
+        }
+        .input_container {
+            background-color: var(--input_bg);
+            display: flex;
+            align-items: center;
+            padding-left: 20px;
+            text-align: center;
+        }
+
+        .input_container:hover {
+            background-color: var(--input_hover);
+        }
+
+        .input_container,
+        #input_submit {
+            height: 60px;
+            border-radius: 30px;
+            width: 100%;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .input_field {
+            color: var(--icon_color);
+            background-color: inherit;
+            width: 87%;
+            border: none;
+            font-size: 1.3rem;
+            font-weight: 400;
+            padding-left: 30px;
+        }
+
+        .input_field:hover,
+        .input_field:focus {
+            outline: none;
+        }
+
+        #input_submit {
+            background-color: var(--submit_bg);
+            padding-left: 0;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        #input_submit:hover {
+            background-color: var(--submit_bg);
+            transition: background-color, 1s;
+            cursor: pointer;
+        }
+
+        h1 {
+            text-align: center;
+            padding-left:20px ;
+            text-decoration: underline;
+
+        }
+        span{
+            text-align: center;
+            padding-left:20px ;
+        }
+        #create_account{
+    display: block;
+    position: relative;
+    top: 30px;
+}
+a{
+    text-decoration: none;
+    color: var(--submit_bg);
+    font-weight: bold;
+    
+}
+a:hover{
+    color: var(--submit_hover);
+}
+.flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    header {
+      width: 97%;
+      max-height: 5%;
+      padding: 0px;
+      justify-content: space-between !important;
+    }
+
+    header ul {
+      margin-top: 1px;
+    }
+
+    header ul li {
+      padding: 5px 20px;
+      margin: 1px;
+      transition: all 0.5s;
+    }
+
+    header ul li a {
+      font-size: 20px;
+      color: rgba(27, 26, 26, 0.705);
+      font-weight: 600;
+
+    }
+
+    header ul li a:hover {
+      color: rgb(7, 12, 0);
+    }
+
+    header input {
+      padding: 5px 20px;
+      color: rgba(27, 26, 26, 0.705);
+      background-color:transparent;
+      font-weight: 800;
+      outline: none;
+      border: none;
+      margin-top: 1px;
+      font-size: 17px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.7s;
+    }
+
+
+    </style>
+</head>
+
+<body>
+    <header class="flex">
+        <ul class="flex" type="none">
+          <li><i class="fas fa-home"></i><a href="index.html"> Home</a></li>
+          <li><i class="fas fa-user"></i><a href="#"> About Us</a></li>
+          <li><i class="fas fa-phone"></i><a href="cart.html"> Contact Us</a></li>
+        </ul>
+        <ul class="flex" type="none">
+          <li><span> <i class="fas fa-shopping-cart"></i> </span><span><a href="cart.html">Cart</a></span></li>
+          <!-- <li> <a href="login.html">Login</a></li> -->
+    
+        </ul>
+      </header>
+    <div id="form_wrapper">
+        <div id="form_right">
+            <h1>Login </h1>
+            <br />
+            <br>
+            <br />
+            <div class="input_container">
+                <i class="fas fa-envelope"></i>
+                <input placeholder="Email" type="email" name="email" id="field_email" class="input_field" />
+            </div>
+            <br />
+            <div class="input_container">
+                <i class="fas fa-lock"></i>
+                <input placeholder="Password" type="password" name="pass" id="field_pass" class="input_field" />
+            </div>
+            <br /><br>
+            <span>Forget <a href="#">Username/Password ?</a> </span>
+            <br /><br />
+            <input type="submit" value="LOGIN" id="input_submit" class="input_field" />
+            <br><span id='create_account'>
+               Not a Member ? <a href="#">Signup</a>
+            </span>
+        </div>
+    </div>
+</body>
+
+</html>
